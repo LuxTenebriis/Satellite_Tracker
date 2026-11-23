@@ -1,0 +1,1 @@
+# Asks for and confirms the observer's location
