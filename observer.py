@@ -20,7 +20,7 @@ def get_observer_location():
             confirmation = confirmation.strip().lower()
 
             # If confirmed, print the corresponding latitude/longitude
-            if confirmation in ("yes", "y"):
+            if confirmation in ("yes", "y", "ye"):
                 observer_lati = location.latitude
                 observer_long = location.longitude
 
