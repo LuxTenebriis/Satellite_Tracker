@@ -4,6 +4,7 @@
 import time
 from geopy.geocoders import Nominatim
 
+# gets input location, checks if valid
 def get_observer_location():
     geolocator = Nominatim(user_agent="lux_sat_tracker_learning")
 
