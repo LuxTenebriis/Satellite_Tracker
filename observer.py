@@ -9,9 +9,14 @@ def get_observer_location():
     geolocator = Nominatim(user_agent="lux_sat_tracker_learning")
 
     while True:
-        location_in = input("☆ Enter your desired location: ")
+        location_in = input("\n☆ Enter your desired location: ")
         print()
-        location = geolocator.geocode(location_in, timeout=10)
+
+        try:
+            location = geolocator.geocode(location_in, timeout=10)
+        except UnicodeEncodeError:
+            print("Your input contains an invalid character. Please type it again.")
+            continue
 
         # Check if it is the desired location
         if location is not None:
@@ -24,7 +29,7 @@ def get_observer_location():
                 observer_lati = location.latitude
                 observer_long = location.longitude
 
-                print("Analysing location...")
+                print("\nAnalysing location...")
                 time.sleep(3)
                 print()
                 print(f"Latitude: {observer_lati}")
