@@ -2,6 +2,7 @@
 
 # Setup
 import time
+from geopy.exc import GeopyError
 from geopy.geocoders import Nominatim
 
 # Gets input location, checks if valid
@@ -11,12 +12,15 @@ def get_observer_location():
     while True:
         location_in = input("\n☆ Enter your desired location: ")
         print()
-
         try:
             location = geolocator.geocode(location_in, timeout=10)
         except UnicodeEncodeError:
             print("Your input contains an invalid character. Please type it again.")
             continue
+        except GeopyError as error:
+            print(f"Location lookup failed: {error}")
+            print("Stopping the lookup. Please check your connection or the service.")
+            raise
 
         # Check if it is the desired location
         if location is not None:

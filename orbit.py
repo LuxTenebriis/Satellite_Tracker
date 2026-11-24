@@ -45,10 +45,10 @@ def get_observer_stats(sat_model, observer_lati, observer_long):
 
 def observer_sat_sats(sat_model, observer_lati, observer_long):
     elevation, azimuth, distance = get_observer_stats(
-    sat_model,
-    observer_lati,
-    observer_long,
-)
+        sat_model,
+        observer_lati,
+        observer_long,
+    )
 
     print(f"Elevation above your horizon: {elevation:.2f} degrees")
     print(f"Direction (azimuth): {azimuth:.2f} degrees")
@@ -74,3 +74,9 @@ def observer_sat_sats(sat_model, observer_lati, observer_long):
     print(f"Direction: {directions[index]} ({azimuth:.2f} degrees)")
 
     return
+
+def get_orbit_age(sat_model):
+    timescale = load.timescale(builtin=True)
+    now = timescale.now()
+
+    return float(now - sat_model.epoch)
