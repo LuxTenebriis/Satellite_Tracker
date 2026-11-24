@@ -37,6 +37,14 @@ def get_satellites():
             search = sat_in.strip().casefold()
             selected_sat = None
 
+            # If user inputs number
+            if sat_in.strip().isdigit():
+                 sat_in = int(sat_in)
+                 for number, sat in enumerate(satellites, start=1):
+                      if number == sat_in:
+                        selected_sat = sat
+                        break
+
             # Search the catalogue
             for sat in satellites:
                  name = sat["OBJECT_NAME"].casefold()

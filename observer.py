@@ -32,8 +32,8 @@ def get_observer_location():
                 print("\nAnalysing location...")
                 time.sleep(3)
                 print()
-                print(f"Latitude: {observer_lati}")
-                print(f"Longitude : {observer_long}")
+                print(f"Latitude: {observer_lati:.2f}")
+                print(f"Longitude : {observer_long:.2f}")
                 print()
 
                 return location.address, observer_lati, observer_long
